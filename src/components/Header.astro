@@ -10,87 +10,77 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="bg-slate-dark text-white">
-  <nav class="container mx-auto px-6 py-4">
+  <nav class="container mx-auto px-6 py-5 max-w-5xl">
     <div class="flex items-center justify-between">
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-3">
+      <a href="/" class="flex items-center">
         <img
           src="/logos/svg/cwlabs-horizontal-dark.svg"
           alt="Commonwealth Labs"
-          class="h-10"
+          class="h-8"
         />
       </a>
 
-      <!-- Desktop Navigation -->
       <ul class="hidden md:flex items-center gap-8">
         {navLinks.map(link => (
           <li>
             <a
               href={link.href}
               class:list={[
-                'text-white/80 hover:text-white transition-colors font-medium',
-                { 'text-white border-b-2 border-sage-green': currentPath === link.href }
+                'text-sm text-white/80 hover:text-white transition-colors',
+                { 'text-white': currentPath === link.href }
               ]}
             >
               {link.label}
             </a>
           </li>
         ))}
+        <li>
+          <a
+            href="https://github.com/rodneygagnon/qckstrt"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-white/80 hover:text-white transition-colors"
+          >
+            GitHub
+          </a>
+        </li>
       </ul>
 
-      <!-- CTA Button -->
-      <a
-        href="https://github.com/rodneygagnon/qckstrt"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hidden md:inline-flex items-center gap-2 bg-sage-green text-white px-5 py-2 rounded-lg hover:bg-sage-green/90 transition-colors font-medium"
-      >
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
-        </svg>
-        View on GitHub
-      </a>
-
-      <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 text-white"
+        class="md:hidden p-2 text-white/80"
         aria-label="Toggle menu"
         aria-expanded="false"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
     </div>
 
-    <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+    <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-white/10 pt-6">
       <ul class="flex flex-col gap-4">
         {navLinks.map(link => (
           <li>
             <a
               href={link.href}
               class:list={[
-                'block text-white/80 hover:text-white transition-colors font-medium py-2',
-                { 'text-white border-l-2 border-sage-green pl-3': currentPath === link.href }
+                'block text-sm text-white/80 hover:text-white transition-colors',
+                { 'text-white': currentPath === link.href }
               ]}
             >
               {link.label}
             </a>
           </li>
         ))}
-        <li class="pt-2">
+        <li>
           <a
             href="https://github.com/rodneygagnon/qckstrt"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-sage-green text-white px-5 py-2 rounded-lg hover:bg-sage-green/90 transition-colors font-medium"
+            class="text-sm text-white/80 hover:text-white transition-colors"
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
-            </svg>
-            View on GitHub
+            GitHub
           </a>
         </li>
       </ul>

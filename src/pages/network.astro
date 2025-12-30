@@ -3,177 +3,101 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 
-// Network members - this will grow as jurisdictions join
 const networkMembers = [
   {
-    name: 'California (Coming 2026)',
+    name: 'California',
     subdomain: 'california.commonwealthlabs.io',
     status: 'development',
-    description: 'The first Commonwealth Labs deployment, focused on California state propositions and legislation.',
+    note: 'Coming 2026',
   },
 ];
 
 const benefits = [
-  {
-    icon: '🌐',
-    title: 'Subdomain Hosting',
-    description: 'Network members receive a *.commonwealthlabs.io subdomain, providing a recognizable and trusted URL.',
-  },
-  {
-    icon: '🔧',
-    title: 'Shared Infrastructure',
-    description: 'Access to shared services, best practices, and infrastructure guidance from the Commonwealth Labs team.',
-  },
-  {
-    icon: '🤝',
-    title: 'Community Support',
-    description: 'Collaborate with other civic tech organizations, share solutions, and learn from each other.',
-  },
-  {
-    icon: '⬆️',
-    title: 'Platform Updates',
-    description: 'Receive upstream improvements and security patches as the platform evolves.',
-  },
-  {
-    icon: '📢',
-    title: 'Visibility',
-    description: 'Get listed in the network directory and benefit from cross-promotion to engaged citizens.',
-  },
-  {
-    icon: '🏠',
-    title: 'Full Independence',
-    description: 'Maintain complete control over your data, infrastructure, customizations, and governance decisions.',
-  },
+  { title: 'Subdomain hosting', description: 'Get a *.commonwealthlabs.io subdomain' },
+  { title: 'Platform updates', description: 'Receive upstream improvements and security patches' },
+  { title: 'Community support', description: 'Collaborate with other civic tech organizations' },
+  { title: 'Full independence', description: 'Complete control over data and infrastructure' },
 ];
 ---
 
-<BaseLayout title="Network" description="The Commonwealth Labs Network is a collaborative ecosystem of civic technology deployments serving different jurisdictions.">
+<BaseLayout title="Network" description="The Commonwealth Labs Network is a collaborative ecosystem of civic technology deployments.">
   <Hero
-    title="The Commonwealth Labs Network"
+    title="Network"
     subtitle="A collaborative ecosystem of civic technology deployments, each serving their own jurisdiction while contributing to a shared platform."
   />
 
-  <!-- How It Works -->
   <Section
-    title="How the Network Works"
-    background="white"
+    title="How it works"
+    subtitle="Each deployment is independent but connected. Improvements flow upstream."
   >
-    <div class="max-w-4xl mx-auto">
-      <div class="bg-light-bg rounded-xl p-8 mb-8">
-        <pre class="text-sm overflow-x-auto text-slate-dark/80 font-mono">
-┌─────────────────────────────────────────────────────────────────────┐
-│                    COMMONWEALTH LABS NETWORK                        │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                     │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐     │
-│  │   california.   │  │    texas.       │  │   newyork.      │     │
-│  │ commonwealthlabs│  │ commonwealthlabs│  │ commonwealthlabs│     │
-│  │      .io        │  │      .io        │  │      .io        │     │
-│  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘     │
-│           │                    │                    │               │
-│           └────────────────────┼────────────────────┘               │
-│                                │                                    │
-│                    ┌───────────▼───────────┐                        │
-│                    │   Shared Platform     │                        │
-│                    │   (Upstream Repo)     │                        │
-│                    └───────────────────────┘                        │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-        </pre>
-      </div>
-
-      <p class="text-lg text-slate-dark/80 text-center max-w-2xl mx-auto">
-        Each deployment is independent but connected. Platform improvements flow upstream, benefiting everyone. Jurisdiction-specific code stays in each fork.
-      </p>
+    <div class="bg-gray-50 rounded-lg p-6 font-mono text-xs text-slate-dark/80 overflow-x-auto">
+      <pre>
+california.commonwealthlabs.io ─┐
+                                ├─── Shared Platform (upstream repo)
+texas.commonwealthlabs.io ──────┤
+                                │
+newyork.commonwealthlabs.io ────┘</pre>
     </div>
   </Section>
 
-  <!-- Network Benefits -->
   <Section
-    title="Network Benefits"
-    subtitle="Join a growing community of civic technology deployments."
-    background="light"
+    title="Benefits"
+    background="gray"
   >
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-8">
       {benefits.map(benefit => (
-        <div class="bg-white rounded-xl p-6 shadow-sm">
-          <div class="text-3xl mb-3">{benefit.icon}</div>
-          <h3 class="text-lg font-semibold mb-2">{benefit.title}</h3>
-          <p class="text-slate-dark/70 text-sm">{benefit.description}</p>
+        <div>
+          <h3 class="font-medium mb-1">{benefit.title}</h3>
+          <p class="text-slate-dark/80 text-sm">{benefit.description}</p>
         </div>
       ))}
     </div>
   </Section>
 
-  <!-- Current Members -->
-  <Section
-    title="Network Members"
-    subtitle="Jurisdictions deploying the Commonwealth Labs platform."
-    background="white"
-  >
-    <div class="max-w-3xl mx-auto">
-      {networkMembers.length > 0 ? (
-        <div class="space-y-4">
-          {networkMembers.map(member => (
-            <div class="bg-light-bg rounded-xl p-6 flex items-center justify-between">
-              <div>
-                <h3 class="text-xl font-semibold mb-1">{member.name}</h3>
-                <p class="text-slate-dark/70 text-sm mb-2">{member.description}</p>
-                <code class="text-sm bg-white px-2 py-1 rounded text-sage-green">{member.subdomain}</code>
-              </div>
-              <span class:list={[
-                'px-3 py-1 rounded-full text-sm font-medium',
-                member.status === 'live' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
-              ]}>
-                {member.status === 'live' ? 'Live' : 'In Development'}
-              </span>
-            </div>
-          ))}
+  <Section title="Members">
+    {networkMembers.map(member => (
+      <div class="flex items-center justify-between py-4 border-b border-slate-dark/5 last:border-0">
+        <div>
+          <span class="font-medium">{member.name}</span>
+          <span class="text-slate-dark/80 text-sm ml-3">{member.note}</span>
         </div>
-      ) : (
-        <div class="text-center py-12 bg-light-bg rounded-xl">
-          <div class="text-4xl mb-4">🚀</div>
-          <h3 class="text-xl font-semibold mb-2">Be the First!</h3>
-          <p class="text-slate-dark/70">
-            The network is just getting started. Your jurisdiction could be among the first to join.
-          </p>
-        </div>
-      )}
-
-      <div class="text-center mt-8">
-        <a
-          href="/join"
-          class="inline-flex items-center gap-2 bg-sage-green text-white px-8 py-3 rounded-lg hover:bg-sage-green/90 transition-colors font-semibold"
-        >
-          Join the Network
-        </a>
+        <code class="text-xs text-slate-dark/80 bg-slate-dark/5 px-3 py-1 rounded-full">{member.subdomain}</code>
       </div>
+    ))}
+
+    <div class="mt-10">
+      <a
+        href="/join"
+        class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
+      >
+        Join the Network
+      </a>
     </div>
   </Section>
 
-  <!-- Independence -->
   <Section background="dark">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6">Full Independence</h2>
-      <p class="text-white/80 text-lg mb-8">
-        Joining the network doesn't mean giving up control. Each deployment maintains complete independence.
+    <div class="max-w-2xl">
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Full independence</h2>
+      <p class="text-white/70 mb-10">
+        Joining the network doesn't mean giving up control.
       </p>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-white/10 rounded-xl p-6">
-          <h3 class="font-semibold mb-2">Your Data</h3>
-          <p class="text-white/70 text-sm">All civic data remains under your organization's control, hosted on your infrastructure.</p>
+
+      <div class="grid sm:grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-medium mb-1">Your data</h3>
+          <p class="text-white/70 text-sm">Hosted on your infrastructure</p>
         </div>
-        <div class="bg-white/10 rounded-xl p-6">
-          <h3 class="font-semibold mb-2">Your Infrastructure</h3>
-          <p class="text-white/70 text-sm">Deploy on your own cloud account (AWS, GCP, Azure) with full access and control.</p>
+        <div>
+          <h3 class="font-medium mb-1">Your customizations</h3>
+          <p class="text-white/70 text-sm">No upstream approval required</p>
         </div>
-        <div class="bg-white/10 rounded-xl p-6">
-          <h3 class="font-semibold mb-2">Your Customizations</h3>
-          <p class="text-white/70 text-sm">Add jurisdiction-specific features without requiring upstream approval.</p>
+        <div>
+          <h3 class="font-medium mb-1">Your infrastructure</h3>
+          <p class="text-white/70 text-sm">AWS, GCP, or Azure</p>
         </div>
-        <div class="bg-white/10 rounded-xl p-6">
-          <h3 class="font-semibold mb-2">Your Governance</h3>
-          <p class="text-white/70 text-sm">Make decisions appropriate for your community without network oversight.</p>
+        <div>
+          <h3 class="font-medium mb-1">Your governance</h3>
+          <p class="text-white/70 text-sm">Decisions for your community</p>
         </div>
       </div>
     </div>

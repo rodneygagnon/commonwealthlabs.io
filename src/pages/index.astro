@@ -6,184 +6,117 @@ import FeatureCard from '../components/FeatureCard.astro';
 
 const features = [
   {
-    icon: '🏛️',
-    title: 'Civic Engagement',
-    description: 'Empower citizens with tools to understand propositions, track legislation, and engage with their representatives.',
+    title: 'Open Source',
+    description: 'Every line of code is open. Self-host with complete control over your data.',
   },
   {
-    icon: '🔓',
-    title: '100% Open Source',
-    description: 'Built entirely with open-source technology. Self-host your instance with complete control over your data.',
+    title: 'AI-Powered',
+    description: 'Semantic search helps citizens understand complex legislative documents.',
   },
   {
-    icon: '🤖',
-    title: 'AI-Powered Insights',
-    description: 'RAG-powered semantic search helps citizens find and understand complex legislative documents.',
+    title: 'Pluggable',
+    description: 'Swap providers for LLMs, databases, and auth without code changes.',
   },
   {
-    icon: '🔌',
-    title: 'Pluggable Architecture',
-    description: 'Swap providers for LLMs, databases, and auth without code changes. Built for flexibility.',
-  },
-  {
-    icon: '🌐',
-    title: 'Network Effect',
-    description: 'Join a growing network of civic technology deployments. Share improvements across jurisdictions.',
-  },
-  {
-    icon: '🛡️',
     title: 'Privacy First',
-    description: 'No tracking, no ads, no data selling. Complete data sovereignty for every deployment.',
+    description: 'No tracking, no ads. Complete data sovereignty for every deployment.',
+  },
+  {
+    title: 'Network Effect',
+    description: 'Improvements from any deployment benefit the entire network.',
+  },
+  {
+    title: 'Self-Hosted',
+    description: 'Deploy on your own infrastructure. AWS, GCP, or Azure.',
   },
 ];
 
 const techStack = [
-  { name: 'React + Next.js', category: 'Frontend' },
-  { name: 'NestJS', category: 'Backend' },
-  { name: 'GraphQL Federation', category: 'API' },
-  { name: 'PostgreSQL + pgvector', category: 'Database' },
-  { name: 'Ollama', category: 'LLM' },
-  { name: 'Supabase', category: 'Auth & Storage' },
+  { name: 'Next.js', url: 'https://nextjs.org' },
+  { name: 'NestJS', url: 'https://nestjs.com' },
+  { name: 'GraphQL', url: 'https://graphql.org' },
+  { name: 'PostgreSQL', url: 'https://postgresql.org' },
+  { name: 'Terraform', url: 'https://terraform.io' },
+  { name: 'Ollama', url: 'https://ollama.com' },
+  { name: 'Supabase', url: 'https://supabase.com' },
 ];
 ---
 
 <BaseLayout title="Civic Technology for Engaged Democracy">
   <Hero
-    title="Civic Technology for Engaged Democracy"
-    subtitle="Commonwealth Labs provides open-source tools that help citizens understand legislation, engage with representatives, and participate in democracy. Fully self-hosted, AI-powered, and built for jurisdictions."
+    title="Civic technology for engaged democracy"
+    subtitle="Open-source tools that help citizens understand legislation, engage with representatives, and participate in democracy."
     ctaText="Join the Network"
     ctaHref="/join"
     secondaryCtaText="View on GitHub"
     secondaryCtaHref="https://github.com/rodneygagnon/qckstrt"
   />
 
-  <!-- What We Do -->
   <Section
-    id="what-we-do"
-    title="What We Build"
-    subtitle="A complete platform for civic engagement, built by and for the community."
-    background="white"
+    id="features"
+    title="Built for civic organizations"
+    subtitle="A complete platform that jurisdictions can fork, customize, and deploy."
   >
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {features.map(feature => (
         <FeatureCard {...feature} />
       ))}
     </div>
   </Section>
 
-  <!-- For Citizens -->
   <Section
-    id="for-citizens"
-    title="For Citizens"
-    subtitle="Democracy works better when citizens are informed."
-    background="light"
+    id="how-it-works"
+    title="How it works"
+    background="gray"
   >
-    <div class="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-12">
       <div>
-        <h3 class="text-2xl font-bold mb-4">Understand What You're Voting For</h3>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3">
-            <span class="text-sage-green text-xl">✓</span>
-            <span>Read plain-language summaries of ballot propositions</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-sage-green text-xl">✓</span>
-            <span>Ask questions about legislation in natural language</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-sage-green text-xl">✓</span>
-            <span>Track how your representatives vote on issues you care about</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-sage-green text-xl">✓</span>
-            <span>Get notified about upcoming meetings and hearings</span>
-          </li>
-        </ul>
+        <div class="text-sm font-medium text-slate-dark mb-3">01</div>
+        <h3 class="text-lg font-medium mb-2">Fork the platform</h3>
+        <p class="text-slate-dark/80 text-sm">Start with a complete, tested codebase. No building from scratch.</p>
       </div>
-      <div class="bg-white rounded-xl p-8 shadow-lg">
-        <div class="text-sm text-slate-dark/60 mb-2">Example query</div>
-        <p class="text-lg font-medium mb-4">"What does Proposition 47 do and how might it affect my community?"</p>
-        <div class="bg-sage-green/10 rounded-lg p-4">
-          <p class="text-sm text-slate-dark/80">
-            AI-powered responses draw from official sources to provide accurate, unbiased information about legislation.
-          </p>
-        </div>
+      <div>
+        <div class="text-sm font-medium text-slate-dark mb-3">02</div>
+        <h3 class="text-lg font-medium mb-2">Add your data</h3>
+        <p class="text-slate-dark/80 text-sm">Create a region provider for your jurisdiction's data sources.</p>
+      </div>
+      <div>
+        <div class="text-sm font-medium text-slate-dark mb-3">03</div>
+        <h3 class="text-lg font-medium mb-2">Deploy and join</h3>
+        <p class="text-slate-dark/80 text-sm">Self-host on your infrastructure and join the network.</p>
       </div>
     </div>
   </Section>
 
-  <!-- For Affiliates -->
-  <Section
-    id="for-affiliates"
-    title="For Organizations"
-    subtitle="Deploy civic technology for your jurisdiction."
-    background="dark"
-  >
-    <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-      <div class="text-center">
-        <div class="text-4xl mb-4">📋</div>
-        <h3 class="text-xl font-semibold mb-2">Fork the Platform</h3>
-        <p class="text-white/70">Start with a complete, tested codebase. No building from scratch.</p>
-      </div>
-      <div class="text-center">
-        <div class="text-4xl mb-4">🏗️</div>
-        <h3 class="text-xl font-semibold mb-2">Add Your Data</h3>
-        <p class="text-white/70">Create a region provider for your jurisdiction's data sources.</p>
-      </div>
-      <div class="text-center">
-        <div class="text-4xl mb-4">🚀</div>
-        <h3 class="text-xl font-semibold mb-2">Deploy & Join</h3>
-        <p class="text-white/70">Self-host on your infrastructure and join the Commonwealth Labs network.</p>
-      </div>
-    </div>
-    <div class="text-center mt-12">
-      <a
-        href="/join"
-        class="inline-flex items-center gap-2 bg-sage-green text-white px-8 py-3 rounded-lg hover:bg-sage-green/90 transition-colors font-semibold text-lg"
-      >
-        Learn How to Join
-      </a>
-    </div>
-  </Section>
-
-  <!-- Technology -->
   <Section
     id="technology"
-    title="Built With Open Source"
-    subtitle="Every component is open source. No vendor lock-in, no proprietary dependencies."
-    background="white"
+    title="Technology"
+    subtitle="Built entirely with open-source components."
   >
-    <div class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+    <div class="flex flex-wrap gap-3">
       {techStack.map(tech => (
-        <div class="bg-light-bg px-4 py-2 rounded-lg">
-          <span class="font-medium">{tech.name}</span>
-          <span class="text-slate-dark/60 text-sm ml-2">({tech.category})</span>
-        </div>
+        <a
+          href={tech.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-slate-dark/80 border border-slate-dark/10 px-4 py-2 rounded-full hover:border-sage hover:text-sage transition-colors"
+        >
+          {tech.name}
+        </a>
       ))}
-    </div>
-    <div class="text-center mt-8">
-      <a
-        href="https://github.com/rodneygagnon/qckstrt/blob/main/docs/README.md"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-sage-green hover:text-slate-dark font-medium"
-      >
-        View full documentation →
-      </a>
     </div>
   </Section>
 
-  <!-- CTA -->
-  <Section background="light">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
-      <p class="text-lg text-slate-dark/70 mb-8">
-        Whether you're a developer, a civic organization, or a government agency, there's a place for you in the Commonwealth Labs network.
+  <Section background="dark">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Ready to get started?</h2>
+      <p class="text-white/70 mb-8">
+        Deploy civic technology for your jurisdiction and join a growing network of organizations.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="flex gap-3">
         <a
           href="/join"
-          class="inline-flex items-center justify-center gap-2 bg-sage-green text-white px-8 py-3 rounded-lg hover:bg-sage-green/90 transition-colors font-semibold"
+          class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
         >
           Join the Network
         </a>
@@ -191,9 +124,9 @@ const techStack = [
           href="https://github.com/rodneygagnon/qckstrt"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 bg-slate-dark text-white px-8 py-3 rounded-lg hover:bg-slate-dark/90 transition-colors font-semibold"
+          class="inline-flex items-center text-white/80 hover:text-white px-5 py-2.5 text-sm font-medium transition-colors"
         >
-          Star on GitHub
+          View on GitHub
         </a>
       </div>
     </div>

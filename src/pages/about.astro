@@ -6,134 +6,104 @@ import Section from '../components/Section.astro';
 
 <BaseLayout title="About" description="Learn about Commonwealth Labs and our mission to strengthen democracy through open-source civic technology.">
   <Hero
-    title="About Commonwealth Labs"
+    title="About"
     subtitle="We believe democracy works better when citizens have access to clear, accurate information about the decisions that affect their lives."
   />
 
-  <!-- Mission -->
-  <Section background="white">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6">Our Mission</h2>
-      <p class="text-lg text-slate-dark/80 mb-6">
-        Commonwealth Labs exists to build and maintain open-source tools that help citizens engage with their government. We believe that:
+  <Section>
+    <div class="max-w-2xl">
+      <h2 class="text-2xl font-semibold mb-6 tracking-tight">Our mission</h2>
+      <p class="text-slate-dark/80 mb-10">
+        Commonwealth Labs builds open-source tools that help citizens engage with their government.
       </p>
-      <ul class="space-y-4 mb-8">
-        <li class="flex items-start gap-3">
-          <span class="text-sage-green text-xl font-bold">1.</span>
-          <div>
-            <strong class="text-slate-dark">Civic information should be accessible.</strong>
-            <p class="text-slate-dark/70">Legislative text is often complex and hard to understand. AI can help make it accessible to everyone.</p>
-          </div>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-sage-green text-xl font-bold">2.</span>
-          <div>
-            <strong class="text-slate-dark">Civic technology should be open.</strong>
-            <p class="text-slate-dark/70">The tools that power democracy should be transparent, auditable, and controlled by the communities they serve.</p>
-          </div>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-sage-green text-xl font-bold">3.</span>
-          <div>
-            <strong class="text-slate-dark">Privacy is non-negotiable.</strong>
-            <p class="text-slate-dark/70">Citizens should be able to research civic issues without being tracked, profiled, or monetized.</p>
-          </div>
-        </li>
-      </ul>
+
+      <div class="space-y-8">
+        <div class="border-l-2 border-sage pl-6">
+          <h3 class="font-medium mb-2">Civic information should be accessible</h3>
+          <p class="text-slate-dark/80 text-sm">Legislative text is complex. AI can help make it accessible to everyone.</p>
+        </div>
+        <div class="border-l-2 border-slate-dark/10 pl-6">
+          <h3 class="font-medium mb-2">Civic technology should be open</h3>
+          <p class="text-slate-dark/80 text-sm">The tools that power democracy should be transparent and controlled by communities.</p>
+        </div>
+        <div class="border-l-2 border-slate-dark/10 pl-6">
+          <h3 class="font-medium mb-2">Privacy is non-negotiable</h3>
+          <p class="text-slate-dark/80 text-sm">Citizens should research civic issues without being tracked or monetized.</p>
+        </div>
+      </div>
     </div>
   </Section>
 
-  <!-- What We Build -->
   <Section
-    title="What We Build"
+    title="What we build"
     subtitle="The QCKSTRT platform powers all Commonwealth Labs deployments."
-    background="light"
+    background="gray"
   >
-    <div class="max-w-4xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white rounded-xl p-6 shadow-sm">
-          <h3 class="text-xl font-semibold mb-3">Proposition Explorer</h3>
-          <p class="text-slate-dark/70">
-            Browse and search ballot propositions with plain-language summaries. Ask questions in natural language and get AI-powered answers based on official sources.
-          </p>
-        </div>
-        <div class="bg-white rounded-xl p-6 shadow-sm">
-          <h3 class="text-xl font-semibold mb-3">Legislative Tracker</h3>
-          <p class="text-slate-dark/70">
-            Follow bills through the legislative process. See upcoming hearings, track votes, and understand how legislation might affect your community.
-          </p>
-        </div>
-        <div class="bg-white rounded-xl p-6 shadow-sm">
-          <h3 class="text-xl font-semibold mb-3">Representative Directory</h3>
-          <p class="text-slate-dark/70">
-            Find your elected officials, see their voting records, and access contact information. Stay connected with the people who represent you.
-          </p>
-        </div>
-        <div class="bg-white rounded-xl p-6 shadow-sm">
-          <h3 class="text-xl font-semibold mb-3">Meeting Calendar</h3>
-          <p class="text-slate-dark/70">
-            Discover public meetings, hearings, and town halls. Get notified about events that matter to you and participate in the democratic process.
-          </p>
-        </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="font-medium mb-2">Proposition Explorer</h3>
+        <p class="text-slate-dark/80 text-sm">Browse ballot propositions with plain-language summaries. Ask questions in natural language.</p>
+      </div>
+      <div>
+        <h3 class="font-medium mb-2">Legislative Tracker</h3>
+        <p class="text-slate-dark/80 text-sm">Follow bills through the legislative process. See hearings and track votes.</p>
+      </div>
+      <div>
+        <h3 class="font-medium mb-2">Representative Directory</h3>
+        <p class="text-slate-dark/80 text-sm">Find elected officials, see voting records, and access contact information.</p>
+      </div>
+      <div>
+        <h3 class="font-medium mb-2">Meeting Calendar</h3>
+        <p class="text-slate-dark/80 text-sm">Discover public meetings and hearings. Get notified about events that matter.</p>
       </div>
     </div>
   </Section>
 
-  <!-- Open Source -->
   <Section background="dark">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6">100% Open Source</h2>
-      <p class="text-white/80 text-lg mb-8">
-        Every line of code is open source under the AGPL-3.0 license. This means you can inspect how it works, verify it does what we say, and even run your own instance.
+    <div class="max-w-2xl">
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">100% open source</h2>
+      <p class="text-white/70 mb-10">
+        Every line of code is open under AGPL-3.0. Inspect how it works, verify our claims, run your own instance.
       </p>
-      <div class="grid sm:grid-cols-3 gap-6">
+
+      <div class="grid sm:grid-cols-3 gap-8">
         <div>
-          <div class="text-3xl mb-2">🔍</div>
-          <h3 class="font-semibold mb-1">Transparent</h3>
-          <p class="text-white/60 text-sm">Anyone can audit the code and verify our claims</p>
+          <h3 class="font-medium mb-1">Transparent</h3>
+          <p class="text-white/70 text-sm">Anyone can audit the code</p>
         </div>
         <div>
-          <div class="text-3xl mb-2">🏠</div>
-          <h3 class="font-semibold mb-1">Self-Hostable</h3>
-          <p class="text-white/60 text-sm">Run your own instance with complete data control</p>
+          <h3 class="font-medium mb-1">Self-hostable</h3>
+          <p class="text-white/70 text-sm">Complete data control</p>
         </div>
         <div>
-          <div class="text-3xl mb-2">🤝</div>
-          <h3 class="font-semibold mb-1">Community-Driven</h3>
-          <p class="text-white/60 text-sm">Improvements from any deployment benefit everyone</p>
+          <h3 class="font-medium mb-1">Community-driven</h3>
+          <p class="text-white/70 text-sm">Improvements benefit everyone</p>
         </div>
       </div>
     </div>
   </Section>
 
-  <!-- Contact -->
-  <Section
-    title="Get in Touch"
-    subtitle="We'd love to hear from you."
-    background="white"
-  >
-    <div class="max-w-xl mx-auto text-center">
-      <p class="text-slate-dark/70 mb-6">
-        Whether you're interested in deploying the platform for your jurisdiction, contributing to the codebase, or just learning more, we're here to help.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="https://github.com/rodneygagnon/qckstrt/discussions"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 bg-sage-green text-white px-6 py-3 rounded-lg hover:bg-sage-green/90 transition-colors font-medium"
-        >
-          Start a Discussion
-        </a>
-        <a
-          href="https://github.com/rodneygagnon/qckstrt/issues"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 bg-slate-dark text-white px-6 py-3 rounded-lg hover:bg-slate-dark/90 transition-colors font-medium"
-        >
-          Report an Issue
-        </a>
-      </div>
+  <Section title="Get in touch">
+    <p class="text-slate-dark/80 mb-8 max-w-lg">
+      Interested in deploying the platform, contributing, or learning more?
+    </p>
+    <div class="flex gap-3">
+      <a
+        href="https://github.com/rodneygagnon/qckstrt/discussions"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
+      >
+        Start a Discussion
+      </a>
+      <a
+        href="https://github.com/rodneygagnon/qckstrt/issues"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center text-slate-dark/80 hover:text-slate-dark px-5 py-2.5 text-sm font-medium transition-colors"
+      >
+        Report an Issue
+      </a>
     </div>
   </Section>
 </BaseLayout>

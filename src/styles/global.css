@@ -1,15 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* Commonwealth Labs Brand Colors */
+/* Commonwealth Labs Brand Colors - per BRAND.md */
 @theme {
   --color-slate-dark: #2C3E50;
-  --color-sage-green: #7F9C8E;
+  --color-sage: #7F9C8E;
   --color-light-bg: #FAFAFA;
   --color-dark-bg: #1E1E1E;
 }
-
-/* Import Inter font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* Base styles */
 html {
@@ -18,28 +16,29 @@ html {
 }
 
 body {
-  @apply bg-light-bg text-slate-dark;
-  line-height: 1.6;
+  @apply bg-white text-slate-dark;
+  line-height: 1.7;
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
 }
 
-/* Links */
-a {
-  @apply text-sage-green hover:text-slate-dark;
-  transition: color 0.2s ease;
+/* Links - only style content links in main area, not header/footer */
+main a:not([class*="bg-"]):not([class*="text-"]) {
+  @apply text-sage hover:text-sage/80;
+  transition: color 0.15s ease;
 }
 
 /* Focus styles for accessibility */
 :focus-visible {
-  @apply outline-2 outline-offset-2 outline-sage-green;
+  @apply outline-2 outline-offset-2 outline-sage;
 }
 
 /* Selection */
 ::selection {
-  @apply bg-sage-green/20;
+  @apply bg-sage/10;
 }

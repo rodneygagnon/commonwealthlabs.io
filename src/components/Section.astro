@@ -3,27 +3,27 @@ interface Props {
   id?: string;
   title?: string;
   subtitle?: string;
-  background?: 'light' | 'white' | 'dark';
+  background?: 'white' | 'gray' | 'dark';
 }
 
-const { id, title, subtitle, background = 'light' } = Astro.props;
+const { id, title, subtitle, background = 'white' } = Astro.props;
 
 const bgClasses = {
-  light: 'bg-light-bg',
   white: 'bg-white',
+  gray: 'bg-gray-50',
   dark: 'bg-slate-dark text-white',
 };
 ---
 
-<section id={id} class:list={['py-16 md:py-24', bgClasses[background]]}>
-  <div class="container mx-auto px-6">
+<section id={id} class:list={['py-20 md:py-28', bgClasses[background]]}>
+  <div class="container mx-auto px-6 max-w-5xl">
     {(title || subtitle) && (
-      <div class="max-w-2xl mx-auto text-center mb-12">
+      <div class="max-w-2xl mb-16">
         {title && (
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
+          <h2 class="text-2xl md:text-3xl font-semibold mb-3 tracking-tight">{title}</h2>
         )}
         {subtitle && (
-          <p class:list={['text-lg', background === 'dark' ? 'text-white/80' : 'text-slate-dark/70']}>
+          <p class:list={['text-base', background === 'dark' ? 'text-white/80' : 'text-slate-dark/80']}>
             {subtitle}
           </p>
         )}

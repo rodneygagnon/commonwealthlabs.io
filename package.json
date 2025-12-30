@@ -6,11 +6,17 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "e2e": "playwright test",
+    "e2e:a11y": "playwright test e2e/accessibility.spec.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.6",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
+    "@playwright/test": "^1.57.0"
   }
 }

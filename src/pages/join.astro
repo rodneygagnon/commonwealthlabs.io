@@ -4,225 +4,121 @@ import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 
 const requirements = [
-  {
-    title: 'Eligible Organization',
-    description: 'Non-profit (501(c)(3), 501(c)(4)), government agency, or educational institution.',
-    icon: '🏛️',
-  },
-  {
-    title: 'Open Source Commitment',
-    description: 'Maintain AGPL-3.0 licensing for any platform modifications you make.',
-    icon: '📜',
-  },
-  {
-    title: 'Code of Conduct',
-    description: 'Agree to our Code of Conduct and support the civic mission of the network.',
-    icon: '🤝',
-  },
-  {
-    title: 'Technical Capability',
-    description: 'Ability to deploy and maintain the platform on cloud infrastructure (AWS, GCP, Azure).',
-    icon: '⚙️',
-  },
+  { title: 'Eligible organization', description: 'Non-profit, government agency, or educational institution' },
+  { title: 'Open source commitment', description: 'Maintain AGPL-3.0 licensing for modifications' },
+  { title: 'Code of conduct', description: 'Support the civic mission of the network' },
+  { title: 'Technical capability', description: 'Ability to deploy and maintain on cloud infrastructure' },
 ];
 
 const steps = [
-  {
-    number: 1,
-    title: 'Fork the Repository',
-    description: 'Start by forking the QCKSTRT platform repository on GitHub.',
-    code: 'git clone https://github.com/your-org/qckstrt.git',
-  },
-  {
-    number: 2,
-    title: 'Create Your Region Provider',
-    description: 'Implement the IRegionProvider interface for your jurisdiction\'s data sources.',
-    code: 'mkdir -p packages/region-provider-yourstate',
-  },
-  {
-    number: 3,
-    title: 'Deploy Your Instance',
-    description: 'Use the included Terraform modules to deploy to your own cloud account.',
-    code: 'cd infra && terraform apply',
-  },
-  {
-    number: 4,
-    title: 'Request Network Membership',
-    description: 'Open a GitHub issue with the "network-membership" label to request your subdomain.',
-    code: null,
-  },
+  { step: '01', title: 'Fork the repository', code: 'git clone https://github.com/your-org/qckstrt.git' },
+  { step: '02', title: 'Create your region provider', code: 'mkdir -p packages/region-provider-yourstate' },
+  { step: '03', title: 'Deploy your instance', code: 'cd infra && terraform apply' },
+  { step: '04', title: 'Request membership', code: null },
 ];
 
 const costs = [
-  { tier: 'Starter', use: 'Development, small pilots', cost: '$100-200/mo' },
-  { tier: 'Standard', use: 'Production, moderate traffic', cost: '$460-610/mo' },
-  { tier: 'Production', use: 'High traffic, full redundancy', cost: '$800-1,200/mo' },
+  { tier: 'Starter', use: 'Development', cost: '$100-200' },
+  { tier: 'Standard', use: 'Production', cost: '$460-610' },
+  { tier: 'Enterprise', use: 'High traffic', cost: '$800-1,200' },
+];
+
+const faqs = [
+  { q: 'Do I need to join the network?', a: 'No. The platform is open source. The network provides optional benefits like subdomains and community support.' },
+  { q: 'Can I use my own domain?', a: 'Yes. The *.commonwealthlabs.io subdomain is optional.' },
+  { q: 'Is commercial support available?', a: 'Yes. See the Commercial Licensing options for dedicated support and SLAs.' },
 ];
 ---
 
-<BaseLayout title="Join the Network" description="Learn how to deploy the Commonwealth Labs platform for your jurisdiction and join the network.">
+<BaseLayout title="Join" description="Learn how to deploy the Commonwealth Labs platform for your jurisdiction.">
   <Hero
-    title="Join the Network"
-    subtitle="Deploy civic technology for your jurisdiction and become part of a growing community of civic tech organizations."
+    title="Join"
+    subtitle="Deploy civic technology for your jurisdiction and become part of a growing network."
   />
 
-  <!-- Requirements -->
-  <Section
-    title="Requirements"
-    subtitle="Who can join the Commonwealth Labs Network?"
-    background="white"
-  >
-    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+  <Section title="Requirements">
+    <div class="grid md:grid-cols-2 gap-6">
       {requirements.map(req => (
-        <div class="bg-light-bg rounded-xl p-6 flex gap-4">
-          <div class="text-3xl">{req.icon}</div>
-          <div>
-            <h3 class="font-semibold mb-1">{req.title}</h3>
-            <p class="text-slate-dark/70 text-sm">{req.description}</p>
-          </div>
+        <div class="border-l-2 border-slate-dark/10 pl-6">
+          <h3 class="font-medium mb-1">{req.title}</h3>
+          <p class="text-slate-dark/80 text-sm">{req.description}</p>
         </div>
       ))}
     </div>
   </Section>
 
-  <!-- Steps -->
   <Section
-    title="How to Join"
-    subtitle="A step-by-step guide to deploying your own instance."
-    background="light"
+    title="How to join"
+    background="gray"
   >
-    <div class="max-w-3xl mx-auto">
-      <div class="space-y-8">
-        {steps.map(step => (
-          <div class="flex gap-6">
-            <div class="flex-shrink-0 w-12 h-12 bg-sage-green text-white rounded-full flex items-center justify-center font-bold text-xl">
-              {step.number}
-            </div>
-            <div class="flex-1">
-              <h3 class="text-xl font-semibold mb-2">{step.title}</h3>
-              <p class="text-slate-dark/70 mb-3">{step.description}</p>
-              {step.code && (
-                <code class="block bg-slate-dark text-white px-4 py-2 rounded-lg text-sm font-mono overflow-x-auto">
-                  {step.code}
-                </code>
-              )}
-            </div>
+    <div class="space-y-10">
+      {steps.map(step => (
+        <div class="flex gap-6">
+          <div class="text-sm font-medium text-slate-dark w-8">{step.step}</div>
+          <div class="flex-1">
+            <h3 class="font-medium mb-2">{step.title}</h3>
+            {step.code && (
+              <code class="block text-xs text-slate-dark/80 bg-white px-4 py-3 rounded font-mono">
+                {step.code}
+              </code>
+            )}
           </div>
-        ))}
-      </div>
-
-      <div class="mt-12 text-center">
-        <a
-          href="https://github.com/rodneygagnon/qckstrt/blob/main/docs/guides/region-provider.md"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 bg-sage-green text-white px-8 py-3 rounded-lg hover:bg-sage-green/90 transition-colors font-semibold"
-        >
-          Read the Full Guide
-        </a>
-      </div>
+        </div>
+      ))}
     </div>
-  </Section>
 
-  <!-- Costs -->
-  <Section
-    title="Infrastructure Costs"
-    subtitle="Each network member is responsible for their own infrastructure costs."
-    background="white"
-  >
-    <div class="max-w-3xl mx-auto">
-      <div class="bg-light-bg rounded-xl overflow-hidden">
-        <table class="w-full">
-          <thead class="bg-slate-dark text-white">
-            <tr>
-              <th class="px-6 py-4 text-left font-semibold">Tier</th>
-              <th class="px-6 py-4 text-left font-semibold">Use Case</th>
-              <th class="px-6 py-4 text-right font-semibold">Est. Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            {costs.map((cost, i) => (
-              <tr class:list={[i % 2 === 0 ? 'bg-white' : 'bg-light-bg']}>
-                <td class="px-6 py-4 font-medium">{cost.tier}</td>
-                <td class="px-6 py-4 text-slate-dark/70">{cost.use}</td>
-                <td class="px-6 py-4 text-right font-medium">{cost.cost}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p class="text-center text-slate-dark/60 mt-4 text-sm">
-        See the <a href="https://github.com/rodneygagnon/qckstrt/blob/main/infra/README.md" target="_blank" rel="noopener noreferrer" class="text-sage-green hover:underline">Infrastructure README</a> for detailed cost breakdowns.
-      </p>
-    </div>
-  </Section>
-
-  <!-- Membership Request -->
-  <Section background="dark">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6">Request Network Membership</h2>
-      <p class="text-white/80 mb-8">
-        Once you've deployed your instance, open a GitHub issue to request your subdomain. Include the following information:
-      </p>
-      <ul class="text-left max-w-md mx-auto space-y-3 mb-8">
-        <li class="flex items-start gap-3">
-          <span class="text-sage-green">•</span>
-          <span class="text-white/80">Organization name and type</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-sage-green">•</span>
-          <span class="text-white/80">Jurisdiction you'll serve</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-sage-green">•</span>
-          <span class="text-white/80">Point of contact information</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-sage-green">•</span>
-          <span class="text-white/80">Desired subdomain (e.g., california.commonwealthlabs.io)</span>
-        </li>
-      </ul>
+    <div class="mt-12">
       <a
-        href="https://github.com/rodneygagnon/qckstrt/issues/new?labels=network-membership&template=network-membership.md"
+        href="https://github.com/rodneygagnon/qckstrt/blob/main/docs/guides/region-provider.md"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 bg-sage-green text-white px-8 py-3 rounded-lg hover:bg-sage-green/90 transition-colors font-semibold"
+        class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
+      >
+        Read the Full Guide
+      </a>
+    </div>
+  </Section>
+
+  <Section title="Infrastructure costs">
+    <p class="text-slate-dark/80 text-sm mb-8">Monthly estimates. Each member manages their own infrastructure.</p>
+    <div class="space-y-3">
+      {costs.map(cost => (
+        <div class="flex justify-between py-3 border-b border-slate-dark/5 last:border-0">
+          <div>
+            <span class="font-medium">{cost.tier}</span>
+            <span class="text-slate-dark/80 text-sm ml-3">{cost.use}</span>
+          </div>
+          <span class="text-slate-dark/80">{cost.cost}/mo</span>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section background="dark">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Request membership</h2>
+      <p class="text-white/70 mb-6">
+        Once deployed, open a GitHub issue with your organization name, jurisdiction, contact info, and desired subdomain.
+      </p>
+      <a
+        href="https://github.com/rodneygagnon/qckstrt/issues/new?labels=network-membership"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
       >
         Request Membership
       </a>
     </div>
   </Section>
 
-  <!-- FAQ -->
-  <Section
-    title="Frequently Asked Questions"
-    background="white"
-  >
-    <div class="max-w-3xl mx-auto space-y-6">
-      <div class="bg-light-bg rounded-xl p-6">
-        <h3 class="font-semibold mb-2">Do I need to join the network to use the platform?</h3>
-        <p class="text-slate-dark/70">
-          No. The platform is fully open source under AGPL-3.0. You can fork and deploy independently. The network provides optional benefits like subdomains and community support.
-        </p>
-      </div>
-      <div class="bg-light-bg rounded-xl p-6">
-        <h3 class="font-semibold mb-2">Can I use my own domain?</h3>
-        <p class="text-slate-dark/70">
-          Yes. Network members can use their own domain while still participating in the network. The *.commonwealthlabs.io subdomain is optional.
-        </p>
-      </div>
-      <div class="bg-light-bg rounded-xl p-6">
-        <h3 class="font-semibold mb-2">What if I want to modify the platform significantly?</h3>
-        <p class="text-slate-dark/70">
-          You're free to modify the platform under AGPL-3.0 terms. However, significant modifications may make it harder to receive upstream updates. Consider contributing changes that benefit all network members.
-        </p>
-      </div>
-      <div class="bg-light-bg rounded-xl p-6">
-        <h3 class="font-semibold mb-2">Is there commercial support available?</h3>
-        <p class="text-slate-dark/70">
-          Yes. For organizations requiring dedicated support, custom development, or SLA guarantees, see the <a href="https://github.com/rodneygagnon/qckstrt/blob/main/LICENSE-COMMERCIAL.md" target="_blank" rel="noopener noreferrer" class="text-sage-green hover:underline">Commercial Licensing</a> options.
-        </p>
-      </div>
+  <Section title="FAQ">
+    <div class="space-y-8 max-w-2xl">
+      {faqs.map(faq => (
+        <div>
+          <h3 class="font-medium mb-2">{faq.q}</h3>
+          <p class="text-slate-dark/80 text-sm">{faq.a}</p>
+        </div>
+      ))}
     </div>
   </Section>
 </BaseLayout>
