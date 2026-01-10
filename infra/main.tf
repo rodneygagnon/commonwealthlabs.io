@@ -113,6 +113,30 @@ resource "aws_acm_certificate" "landing" {
   }
 }
 
+# CloudFront Function for URL rewriting (append index.html to directory requests)
+resource "aws_cloudfront_function" "url_rewrite" {
+  name    = "commonwealthlabs-url-rewrite-${var.environment}"
+  runtime = "cloudfront-js-2.0"
+  publish = true
+  code    = <<-EOF
+    function handler(event) {
+      var request = event.request;
+      var uri = request.uri;
+
+      // If URI ends with '/' append index.html
+      if (uri.endsWith('/')) {
+        request.uri += 'index.html';
+      }
+      // If URI doesn't have a file extension, append /index.html
+      else if (!uri.includes('.')) {
+        request.uri += '/index.html';
+      }
+
+      return request;
+    }
+  EOF
+}
+
 # CloudFront distribution
 resource "aws_cloudfront_distribution" "landing" {
   enabled             = true
@@ -146,6 +170,11 @@ resource "aws_cloudfront_distribution" "landing" {
     default_ttl            = 3600
     max_ttl                = 86400
     compress               = true
+
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.url_rewrite.arn
+    }
   }
 
   # Handle SPA routing - serve index.html for 404s
