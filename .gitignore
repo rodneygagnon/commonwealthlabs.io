@@ -28,9 +28,9 @@ playwright-report/
 test-results/
 
 # Terraform
-infra/.terraform/
-infra/*.tfstate
-infra/*.tfstate.*
-infra/*.tfvars
-!infra/*.tfvars.example
-infra/.terraform.lock.hcl
+infra/**/.terraform/
+infra/**/*.tfstate
+infra/**/*.tfstate.*
+infra/**/*.tfvars
+!infra/**/environments/*.tfvars
+infra/**/.terraform.lock.hcl

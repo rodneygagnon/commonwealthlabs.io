@@ -1,0 +1,2 @@
+# Redirect www to bare domain
+https://www.opuspopuli.org/* https://opuspopuli.org/:splat 301

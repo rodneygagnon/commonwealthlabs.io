@@ -16,6 +16,12 @@ npm run build
 
 # Preview production build
 npm run preview
+
+# Run E2E tests
+npm run e2e
+
+# Run accessibility tests (WCAG 2.2 AA)
+npm run e2e:a11y
 ```
 
 ## Technology Stack
@@ -23,6 +29,7 @@ npm run preview
 - **[Astro](https://astro.build)** - Static site generator
 - **[Tailwind CSS](https://tailwindcss.com)** - Styling
 - **[TypeScript](https://typescriptlang.org)** - Type safety
+- **[Playwright](https://playwright.dev)** - E2E and accessibility testing (WCAG 2.2 AA)
 
 ## Project Structure
 
