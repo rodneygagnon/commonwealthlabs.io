@@ -1,0 +1,26 @@
+---
+interface Props {
+  steps: { label: string; description: string }[];
+}
+
+const { steps } = Astro.props;
+---
+
+<div class="flex flex-col md:flex-row items-stretch gap-4 md:gap-0">
+  {steps.map((step, i) => (
+    <div class="flex flex-col md:flex-row items-stretch flex-1">
+      <div class="border border-slate-dark/10 rounded-lg p-5 flex-1">
+        <div class="text-sm font-medium text-slate-dark/80 mb-1">{String(i + 1).padStart(2, '0')}</div>
+        <h3 class="text-base font-medium text-slate-dark mb-1">{step.label}</h3>
+        <p class="text-slate-dark/70 text-xs leading-relaxed">{step.description}</p>
+      </div>
+      {i < steps.length - 1 && (
+        <div class="flex items-center justify-center md:px-3 py-2 md:py-0">
+          <svg class="w-4 h-4 text-sage rotate-90 md:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      )}
+    </div>
+  ))}
+</div>

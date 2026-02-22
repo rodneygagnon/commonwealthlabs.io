@@ -27,10 +27,17 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-/* Links - only style content links in main area, not header/footer */
-main a:not([class*="bg-"]):not([class*="text-"]) {
-  @apply text-sage hover:text-sage/80;
-  transition: color 0.15s ease;
+/* Links - only style unstyled content links in main area, not header/footer */
+@layer base {
+  main a:not([class*="bg-"]):not([class*="text-"]) {
+    color: var(--color-sage);
+    transition: color 0.15s ease;
+  }
+  @media (hover: hover) {
+    main a:not([class*="bg-"]):not([class*="text-"]):hover {
+      color: color-mix(in oklab, var(--color-sage) 80%, transparent);
+    }
+  }
 }
 
 /* Focus styles for accessibility */

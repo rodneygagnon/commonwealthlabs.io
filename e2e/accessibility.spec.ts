@@ -42,32 +42,25 @@ async function checkAccessibility(
   return violations;
 }
 
+const pages = [
+  { name: "Home", path: "/" },
+  { name: "Platform", path: "/platform" },
+  { name: "About", path: "/about" },
+  { name: "Why", path: "/why" },
+  { name: "Network", path: "/network" },
+  { name: "Open Source", path: "/open-source" },
+  { name: "Get Involved", path: "/get-involved" },
+  { name: "Privacy", path: "/privacy" },
+];
+
 test.describe("Accessibility - All Pages", () => {
-  test("Home page should have no WCAG 2.2 AA violations", async ({ page }) => {
-    await page.goto("/");
-    const violations = await checkAccessibility(page);
-    expect(violations).toEqual([]);
-  });
-
-  test("About page should have no WCAG 2.2 AA violations", async ({ page }) => {
-    await page.goto("/about");
-    const violations = await checkAccessibility(page);
-    expect(violations).toEqual([]);
-  });
-
-  test("Network page should have no WCAG 2.2 AA violations", async ({
-    page,
-  }) => {
-    await page.goto("/network");
-    const violations = await checkAccessibility(page);
-    expect(violations).toEqual([]);
-  });
-
-  test("Join page should have no WCAG 2.2 AA violations", async ({ page }) => {
-    await page.goto("/join");
-    const violations = await checkAccessibility(page);
-    expect(violations).toEqual([]);
-  });
+  for (const p of pages) {
+    test(`${p.name} page should have no WCAG 2.2 AA violations`, async ({ page }) => {
+      await page.goto(p.path);
+      const violations = await checkAccessibility(page);
+      expect(violations).toEqual([]);
+    });
+  }
 });
 
 test.describe("Accessibility - HTML Lang Attribute", () => {
@@ -142,57 +135,18 @@ test.describe("Accessibility - Images and Icons", () => {
 });
 
 test.describe("Accessibility - Color Contrast", () => {
-  test("Home page should pass color contrast requirements", async ({
-    page,
-  }) => {
-    await page.goto("/");
+  for (const p of pages) {
+    test(`${p.name} page should pass color contrast requirements`, async ({ page }) => {
+      await page.goto(p.path);
 
-    const accessibilityScanResults = await new AxeBuilder({ page })
-      .withTags(["wcag2aa"])
-      .options({ runOnly: ["color-contrast"] })
-      .analyze();
+      const accessibilityScanResults = await new AxeBuilder({ page })
+        .withTags(["wcag2aa"])
+        .options({ runOnly: ["color-contrast"] })
+        .analyze();
 
-    expect(accessibilityScanResults.violations).toEqual([]);
-  });
-
-  test("About page should pass color contrast requirements", async ({
-    page,
-  }) => {
-    await page.goto("/about");
-
-    const accessibilityScanResults = await new AxeBuilder({ page })
-      .withTags(["wcag2aa"])
-      .options({ runOnly: ["color-contrast"] })
-      .analyze();
-
-    expect(accessibilityScanResults.violations).toEqual([]);
-  });
-
-  test("Network page should pass color contrast requirements", async ({
-    page,
-  }) => {
-    await page.goto("/network");
-
-    const accessibilityScanResults = await new AxeBuilder({ page })
-      .withTags(["wcag2aa"])
-      .options({ runOnly: ["color-contrast"] })
-      .analyze();
-
-    expect(accessibilityScanResults.violations).toEqual([]);
-  });
-
-  test("Join page should pass color contrast requirements", async ({
-    page,
-  }) => {
-    await page.goto("/join");
-
-    const accessibilityScanResults = await new AxeBuilder({ page })
-      .withTags(["wcag2aa"])
-      .options({ runOnly: ["color-contrast"] })
-      .analyze();
-
-    expect(accessibilityScanResults.violations).toEqual([]);
-  });
+      expect(accessibilityScanResults.violations).toEqual([]);
+    });
+  }
 });
 
 test.describe("Accessibility - Headings", () => {

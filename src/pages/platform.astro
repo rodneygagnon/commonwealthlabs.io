@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import WorkflowDiagram from '../components/WorkflowDiagram.astro';
+import FeatureBlock from '../components/FeatureBlock.astro';
+import TechCategory from '../components/TechCategory.astro';
+
+const workflowSteps = [
+  { label: 'Petitions', description: 'Citizens raise issues and collect support' },
+  { label: 'Propositions', description: 'Issues become ballot measures' },
+  { label: 'Campaign Finance', description: 'Money flows in to influence outcomes' },
+  { label: 'Representatives', description: 'Elected officials cast votes' },
+  { label: 'Meetings', description: 'Decisions are debated in public' },
+];
+
+const features = [
+  {
+    id: 'petition-scanner',
+    title: 'Petition Scanner',
+    badge: 'AI-Powered',
+    description: 'Point your phone at any petition and get an instant, plain-language breakdown of what it means and who it affects. No legal background required.',
+    capabilities: [
+      'Scan petitions directly with your phone camera',
+      'AI-generated plain-language analysis in seconds',
+      'Understand what a measure would actually change',
+      'Share analysis with your community',
+    ],
+  },
+  {
+    id: 'proposition-explorer',
+    title: 'Proposition Explorer',
+    description: 'Browse every ballot measure in your jurisdiction. Filter by status, read plain-language summaries, and access the full text when you need the details.',
+    capabilities: [
+      'Browse measures by status: pending, passed, failed, withdrawn',
+      'Plain-language summaries for every proposition',
+      'Full text access for those who want to read the source',
+      'Track outcomes across election cycles',
+    ],
+  },
+  {
+    id: 'campaign-finance',
+    title: 'Campaign Finance Tracker',
+    description: 'See who is funding what. Follow the money behind any ballot measure or candidate to understand who stands to benefit from the outcome.',
+    capabilities: [
+      'Track contributions to campaigns and committees',
+      'See how campaign money is being spent',
+      'Follow outside spending on ballot measures',
+      'Transparent view of political money flows',
+    ],
+  },
+  {
+    id: 'representative-directory',
+    title: 'Representative Directory',
+    description: 'Find who represents you at every level of government. Search by location, filter by chamber or party, and contact them directly.',
+    capabilities: [
+      'Searchable directory of elected officials',
+      'Filter by chamber, party, or district',
+      'Contact representatives through built-in forms',
+      'View committee assignments and roles',
+    ],
+  },
+  {
+    id: 'meeting-calendar',
+    title: 'Meeting Calendar',
+    description: 'Never miss a hearing that matters to you. Browse upcoming legislative meetings with agendas and video links for public sessions.',
+    capabilities: [
+      'Upcoming and past legislative meeting schedules',
+      'Meeting agendas when available',
+      'Video links for recorded sessions',
+      'Filter by legislative body',
+    ],
+  },
+  {
+    id: 'document-qa',
+    title: 'Document Q&A',
+    badge: 'AI-Powered',
+    description: 'Upload any civic document — a bill, a budget, a regulation — and ask questions about it in plain language. Get answers with citations pointing to the exact passages.',
+    capabilities: [
+      'Upload and index any civic document',
+      'Ask questions in plain language',
+      'Get answers with source citations',
+      'All AI processing happens locally on your infrastructure',
+    ],
+  },
+];
+
+const techStack = [
+  {
+    category: 'Frontend',
+    items: [
+      { name: 'Next.js', url: 'https://nextjs.org' },
+      { name: 'React', url: 'https://react.dev' },
+      { name: 'Tailwind CSS', url: 'https://tailwindcss.com' },
+      { name: 'Apollo Client', url: 'https://apollographql.com' },
+    ],
+  },
+  {
+    category: 'Backend',
+    items: [
+      { name: 'NestJS', url: 'https://nestjs.com' },
+      { name: 'GraphQL', url: 'https://graphql.org' },
+      { name: 'Prisma', url: 'https://prisma.io' },
+    ],
+  },
+  {
+    category: 'Data',
+    items: [
+      { name: 'PostgreSQL', url: 'https://postgresql.org' },
+      { name: 'Redis', url: 'https://redis.io' },
+      { name: 'Supabase', url: 'https://supabase.com' },
+    ],
+  },
+  {
+    category: 'AI',
+    items: [
+      { name: 'Ollama', url: 'https://ollama.com' },
+    ],
+  },
+  {
+    category: 'Infrastructure',
+    items: [
+      { name: 'Terraform', url: 'https://terraform.io' },
+      { name: 'Docker', url: 'https://docker.com' },
+      { name: 'Kubernetes', url: 'https://kubernetes.io' },
+    ],
+  },
+];
+---
+
+<BaseLayout title="The Platform" description="See what Opus Populi builds: petition scanning, proposition analysis, campaign finance tracking, representative lookup, and AI-powered document Q&A.">
+  <Hero
+    title="See what we build"
+    subtitle="Civic tools for every step of the democratic process — from the moment a petition is signed to the meeting where decisions are made. Open source, locally hosted, and built for communities."
+    ctaText="Get Involved"
+    ctaHref="/get-involved"
+    secondaryCtaText="View Source"
+    secondaryCtaHref="https://github.com/OpusPopuli/opuspopuli"
+  />
+
+  <Section
+    id="workflow"
+    title="The civic workflow"
+    subtitle="A petition becomes a ballot measure becomes law. We give citizens tools for every step."
+    background="gray"
+  >
+    <WorkflowDiagram steps={workflowSteps} />
+  </Section>
+
+  <Section
+    id="features"
+    title="What the platform does"
+    subtitle="Six tools that give communities direct access to civic information."
+  >
+    <div class="space-y-12">
+      {features.map(feature => (
+        <FeatureBlock {...feature} />
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    id="regions"
+    title="Any jurisdiction, no code required"
+    subtitle="Adding your region's data sources doesn't require writing code. Communities configure their own data connections through simple, declarative setup."
+    background="gray"
+  >
+    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+      <p>
+        Every jurisdiction publishes civic data differently — different websites, different formats, different update schedules. The region plugin system handles this complexity so communities don't have to.
+      </p>
+      <div class="space-y-3">
+        <div class="border-l-2 border-sage pl-4">
+          <p class="text-sm font-medium text-slate-dark">Declarative data sources</p>
+          <p class="text-sm text-slate-dark/70">Define where your jurisdiction's data lives and how to access it</p>
+        </div>
+        <div class="border-l-2 border-sage pl-4">
+          <p class="text-sm font-medium text-slate-dark">Automatic integration</p>
+          <p class="text-sm text-slate-dark/70">Data syncs on your schedule without manual intervention</p>
+        </div>
+        <div class="border-l-2 border-sage pl-4">
+          <p class="text-sm font-medium text-slate-dark">Community-contributed</p>
+          <p class="text-sm text-slate-dark/70">Region configurations are shared across the network so others can benefit</p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    id="local-ai"
+    title="AI that never leaves your server"
+    subtitle="All AI processing runs locally on your own infrastructure. Nothing is sent to external services."
+  >
+    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+      <p>
+        Most AI-powered civic tools send your queries to third-party services. What legislation you're researching, what politicians you're looking up, what petitions you care about — all of it becomes someone else's data.
+      </p>
+      <p>
+        Opus Populi runs entirely on open-source AI models hosted on your own infrastructure. Your civic research stays on your server. Period.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-4 mt-6">
+        <div class="text-sm">
+          <p class="font-medium text-slate-dark mb-1">No external API calls</p>
+          <p class="text-slate-dark/70">AI processing never leaves your network</p>
+        </div>
+        <div class="text-sm">
+          <p class="font-medium text-slate-dark mb-1">No per-query costs</p>
+          <p class="text-slate-dark/70">Run as many analyses as you need</p>
+        </div>
+        <div class="text-sm">
+          <p class="font-medium text-slate-dark mb-1">Full auditability</p>
+          <p class="text-slate-dark/70">Inspect every model and every decision</p>
+        </div>
+        <div class="text-sm">
+          <p class="font-medium text-slate-dark mb-1">100% open source</p>
+          <p class="text-slate-dark/70">No proprietary dependencies in the AI stack</p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    id="tech-stack"
+    title="Built on open source"
+    subtitle="Every component is open source. No proprietary lock-in at any layer."
+    background="gray"
+  >
+    <div class="space-y-8">
+      {techStack.map(cat => (
+        <TechCategory {...cat} />
+      ))}
+    </div>
+  </Section>
+
+  <Section background="dark">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Bring this to your community</h2>
+      <p class="text-white/70 mb-8">
+        Every community deserves civic tools they own and control. Join the network or contribute to the platform.
+      </p>
+      <div class="flex gap-3">
+        <a
+          href="/get-involved"
+          class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
+        >
+          Get Involved
+        </a>
+        <a
+          href="/open-source"
+          class="inline-flex items-center text-white/80 hover:text-white px-5 py-2.5 text-sm font-medium transition-colors"
+        >
+          Contribute
+        </a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

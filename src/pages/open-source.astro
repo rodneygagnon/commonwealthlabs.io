@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+
+const contributionAreas = [
+  {
+    title: 'Region Plugins',
+    description: 'Add your jurisdiction\'s data sources so your community can access local civic information.',
+  },
+  {
+    title: 'Frontend',
+    description: 'React components, accessibility improvements, responsive design, and user experience.',
+  },
+  {
+    title: 'Backend',
+    description: 'NestJS services, GraphQL resolvers, data pipelines, and API development.',
+  },
+  {
+    title: 'AI / ML',
+    description: 'Analysis pipelines, document processing, and open-source model integration.',
+  },
+  {
+    title: 'Infrastructure',
+    description: 'Terraform modules, Docker configuration, CI/CD, and deployment tooling.',
+  },
+  {
+    title: 'Documentation',
+    description: 'Guides, API documentation, tutorials, translations, and onboarding materials.',
+  },
+];
+
+const principles = [
+  {
+    title: 'Privacy by default',
+    description: 'No external API calls for AI. No tracking. Every feature must work without compromising user privacy.',
+  },
+  {
+    title: 'Accessible first',
+    description: 'WCAG 2.2 AA compliance. Keyboard navigation. Screen reader support. Civic tools must be usable by everyone.',
+  },
+  {
+    title: 'Test everything',
+    description: 'Unit tests, integration tests, end-to-end tests. Civic infrastructure must be reliable.',
+  },
+  {
+    title: 'Document as you build',
+    description: 'If it isn\'t documented, it doesn\'t exist. Every feature needs a guide for the next contributor.',
+  },
+];
+---
+
+<BaseLayout title="Open Source" description="Opus Populi is open source under AGPL-3.0. Explore the architecture, contribute, and join the community building civic technology.">
+  <Hero
+    title="Built in the open"
+    subtitle="Opus Populi is open source under AGPL-3.0. Every line of code is public, every decision is transparent, and every contribution is a civic act."
+    ctaText="View on GitHub"
+    ctaHref="https://github.com/OpusPopuli/opuspopuli"
+    secondaryCtaText="Read the Docs"
+    secondaryCtaHref="https://github.com/OpusPopuli/opuspopuli#readme"
+  />
+
+  <Section
+    title="Architecture"
+    subtitle="A modular system designed so communities can customize and deploy independently."
+  >
+    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+      <p>
+        Opus Populi is built as a set of independent, loosely coupled services. Each community can deploy the full stack or just the parts they need. Services communicate through a federated API layer, and every component can be swapped or extended.
+      </p>
+      <p>
+        The frontend is a modern React application. The backend is a collection of focused microservices, each handling a specific domain: user management, document processing, civic data, and knowledge retrieval. AI runs as a local sidecar — never as an external dependency.
+      </p>
+      <p>
+        This modularity isn't accidental. It means a community in Texas can run a different set of region plugins than a community in California, while both contribute improvements back to the shared codebase.
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    title="Repository structure"
+    background="gray"
+  >
+    <div class="max-w-2xl">
+      <pre class="bg-slate-dark text-white/80 text-sm p-6 rounded-lg overflow-x-auto font-mono leading-relaxed"><code>opuspopuli/
+├── apps/
+│   ├── frontend/          # React application
+│   └── backend/           # NestJS microservices
+├── packages/
+│   ├── relationaldb-provider/  # Database layer
+│   └── region-provider/        # Civic data plugins
+├── infra/
+│   └── cloudflare/        # Infrastructure as code
+├── docs/                  # Architecture and guides
+├── docker-compose.yml     # Local development
+└── docker-compose-prod.yml # Production deployment</code></pre>
+      <p class="text-slate-dark/70 text-sm mt-4">
+        The monorepo keeps everything in one place — frontend, backend, shared packages, infrastructure, and documentation.
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    title="How to contribute"
+  >
+    <div class="grid md:grid-cols-4 gap-12">
+      <div>
+        <div class="text-sm font-medium text-slate-dark mb-3">01</div>
+        <h3 class="text-lg font-medium mb-2">Fork and clone</h3>
+        <p class="text-slate-dark/80 text-sm">Fork the repository on GitHub and clone it to your machine.</p>
+      </div>
+      <div>
+        <div class="text-sm font-medium text-slate-dark mb-3">02</div>
+        <h3 class="text-lg font-medium mb-2">Set up your environment</h3>
+        <p class="text-slate-dark/80 text-sm">One command gets everything running locally with Docker Compose.</p>
+      </div>
+      <div>
+        <div class="text-sm font-medium text-slate-dark mb-3">03</div>
+        <h3 class="text-lg font-medium mb-2">Pick an issue</h3>
+        <p class="text-slate-dark/80 text-sm">Browse issues labeled "good first issue" for a guided starting point.</p>
+      </div>
+      <div>
+        <div class="text-sm font-medium text-slate-dark mb-3">04</div>
+        <h3 class="text-lg font-medium mb-2">Submit a PR</h3>
+        <p class="text-slate-dark/80 text-sm">Open a pull request. We review promptly and help you get it merged.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    title="Where to start"
+    subtitle="Contributions come in many forms — not just code."
+    background="gray"
+  >
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {contributionAreas.map(area => (
+        <div class="border-l-2 border-slate-dark/10 pl-6 py-2">
+          <h3 class="text-lg font-medium text-slate-dark mb-2">{area.title}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{area.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    title="Development principles"
+  >
+    <div class="max-w-2xl space-y-6">
+      {principles.map(p => (
+        <div class="border-l-2 border-sage pl-6">
+          <h3 class="text-base font-medium text-slate-dark mb-1">{p.title}</h3>
+          <p class="text-slate-dark/80 text-sm">{p.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section background="dark">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Join the community</h2>
+      <p class="text-white/70 mb-8">
+        Building civic infrastructure is a collective effort. Whether you write code, documentation, or region configs — every contribution strengthens the network.
+      </p>
+      <div class="flex gap-3">
+        <a
+          href="https://github.com/OpusPopuli/opuspopuli"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
+        >
+          View on GitHub
+        </a>
+        <a
+          href="/get-involved"
+          class="inline-flex items-center text-white/80 hover:text-white px-5 py-2.5 text-sm font-medium transition-colors"
+        >
+          Deploy for Your Community
+        </a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

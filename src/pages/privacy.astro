@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+
+const protections = [
+  {
+    title: 'Local AI processing',
+    description: 'Every AI operation — document analysis, petition scanning, search — runs on your community\'s own infrastructure. Your queries never leave your network.',
+  },
+  {
+    title: 'Location privacy',
+    description: 'We don\'t need your exact address. Jurisdiction matching uses imprecise location data — enough to connect you with the right civic information, nothing more.',
+  },
+  {
+    title: 'Data minimization',
+    description: 'We collect only what\'s necessary to provide civic tools. No behavioral profiles, no interest tracking, no data enrichment from third parties.',
+  },
+  {
+    title: 'Passwordless authentication',
+    description: 'Sign in with passkeys and biometrics. No passwords to steal, no credentials stored on our servers, no phishing vectors.',
+  },
+  {
+    title: 'Secure sessions',
+    description: 'Short-lived sessions with automatic expiry. No persistent tracking across visits. When you close the browser, your session ends.',
+  },
+  {
+    title: 'Consent management',
+    description: 'Full GDPR and CCPA compliance. You control your data, you choose what to share, and you can delete everything at any time.',
+  },
+];
+
+const neverDo = [
+  'Sell or share your data with anyone',
+  'Track which legislation you research',
+  'Profile your political interests or leanings',
+  'Send your queries to external AI services',
+  'Use analytics that identify individual users',
+  'Retain data longer than necessary to provide the service',
+  'Allow third-party trackers or advertising scripts',
+  'Make decisions about what civic information to show you',
+];
+
+const comparison = [
+  { category: 'AI processing', opus: 'Runs on your infrastructure', typical: 'Sent to third-party APIs' },
+  { category: 'Location data', opus: 'Imprecise, jurisdiction-level only', typical: 'Precise GPS coordinates stored' },
+  { category: 'Search history', opus: 'Never stored or tracked', typical: 'Logged and used for profiling' },
+  { category: 'Authentication', opus: 'Passwordless (passkeys)', typical: 'Email/password with tracking cookies' },
+  { category: 'Data ownership', opus: 'You own and control everything', typical: 'Platform owns your data' },
+  { category: 'Third-party sharing', opus: 'Zero third parties', typical: 'Shared with advertisers and partners' },
+  { category: 'Source code', opus: 'Fully auditable (AGPL-3.0)', typical: 'Proprietary, closed source' },
+];
+---
+
+<BaseLayout title="Privacy Architecture" description="Privacy is architecture, not policy. See how Opus Populi protects your civic research through local AI, data minimization, and zero third-party sharing.">
+  <Hero
+    title="Privacy is architecture, not policy"
+    subtitle="Most civic platforms promise privacy in their terms of service while their architecture does the opposite. We built privacy into the system itself — it's not a policy we follow, it's a constraint we can't violate."
+    ctaText="See the Platform"
+    ctaHref="/platform"
+    secondaryCtaText="Audit the Code"
+    secondaryCtaHref="https://github.com/OpusPopuli/opuspopuli"
+  />
+
+  <Section
+    title="The problem with civic technology"
+  >
+    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+      <p>
+        When you use most civic technology platforms, you're creating a detailed record of your political interests. Which legislation you research. Which representatives you contact. Which meetings you attend. Which petitions you care about.
+      </p>
+      <p>
+        That data — what you care about politically — is some of the most sensitive information about you. And on most platforms, it's collected, stored, and often shared with third parties. Even platforms built with good intentions typically rely on external AI services that receive every query you make.
+      </p>
+      <p class="font-medium text-slate-dark">
+        Your civic research should be as private as your vote.
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    title="How we protect you"
+    subtitle="Privacy protections built into the architecture, not bolted on after the fact."
+    background="gray"
+  >
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {protections.map(p => (
+        <div class="border-l-2 border-sage pl-6 py-2">
+          <h3 class="text-base font-medium text-slate-dark mb-2">{p.title}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{p.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    title="What we never do"
+    subtitle="Explicit commitments, not vague assurances."
+  >
+    <div class="max-w-2xl">
+      <ul class="space-y-3">
+        {neverDo.map(item => (
+          <li class="flex items-start gap-3 text-slate-dark/80">
+            <span class="text-slate-dark/50 mt-1 text-sm font-bold" aria-hidden="true">&times;</span>
+            <span class="text-sm">{item}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-8 text-slate-dark/80 text-sm">
+        These aren't aspirational goals. They're architectural constraints. The system is built so that most of these things are technically impossible — not just against policy.
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    title="How we compare"
+    subtitle="Architecture-level privacy vs. policy-level promises."
+    background="gray"
+  >
+    <div class="overflow-x-auto">
+      <table class="w-full max-w-2xl text-sm">
+        <thead>
+          <tr class="border-b border-slate-dark/10">
+            <th class="text-left py-3 pr-4 font-medium text-slate-dark"></th>
+            <th class="text-left py-3 pr-4 font-medium text-slate-dark">Opus Populi</th>
+            <th class="text-left py-3 font-medium text-slate-dark">Typical civic platforms</th>
+          </tr>
+        </thead>
+        <tbody>
+          {comparison.map(row => (
+            <tr class="border-b border-slate-dark/5">
+              <td class="py-3 pr-4 text-slate-dark/70 text-xs uppercase tracking-wide">{row.category}</td>
+              <td class="py-3 pr-4 text-slate-dark/80">{row.opus}</td>
+              <td class="py-3 text-slate-dark/70">{row.typical}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </Section>
+
+  <Section background="dark">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Don't take our word for it</h2>
+      <p class="text-white/70 mb-8">
+        Every privacy claim on this page is verifiable. The entire codebase is open source under AGPL-3.0. Read the code. Audit the architecture. Deploy it yourself.
+      </p>
+      <div class="flex gap-3">
+        <a
+          href="/platform"
+          class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
+        >
+          See the Platform
+        </a>
+        <a
+          href="/open-source"
+          class="inline-flex items-center text-white/80 hover:text-white px-5 py-2.5 text-sm font-medium transition-colors"
+        >
+          Audit the Code
+        </a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

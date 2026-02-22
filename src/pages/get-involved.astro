@@ -17,15 +17,28 @@ const steps = [
   { step: '04', title: 'Strengthen the network', description: 'Your learnings and improvements help other communities.' },
 ];
 
+const devAreas = [
+  { title: 'Code', description: 'React frontend, NestJS backend, GraphQL APIs, and infrastructure tooling.' },
+  { title: 'Region plugins', description: 'Add your jurisdiction\'s data sources so your community can access local civic information.' },
+  { title: 'Documentation', description: 'Guides, API docs, tutorials, and onboarding materials for new contributors.' },
+  { title: 'Translations', description: 'Help make civic tools accessible in more languages, starting with Spanish.' },
+  { title: 'Accessibility', description: 'WCAG 2.2 AA compliance, keyboard navigation, and screen reader support.' },
+  { title: 'Testing', description: 'Unit tests, integration tests, and end-to-end tests for civic infrastructure.' },
+];
+
 const costs = [
-  { tier: 'Starter', use: 'Development', cost: '$100-200' },
-  { tier: 'Standard', use: 'Production', cost: '$460-610' },
-  { tier: 'Enterprise', use: 'High traffic', cost: '$800-1,200' },
+  { tier: 'Starter', use: 'Development and testing', cost: '$100-200', notes: 'Suitable for setting up and evaluating the platform' },
+  { tier: 'Standard', use: 'Production deployment', cost: '$460-610', notes: 'Database, compute, storage, and AI processing for a typical community' },
+  { tier: 'Enterprise', use: 'High traffic communities', cost: '$800-1,200', notes: 'Scaled infrastructure for larger jurisdictions with heavy usage' },
 ];
 
 const faqs = [
   { q: 'Do I need to join the network?', a: 'No. The code is open source—you can run it independently. The network offers optional benefits like shared infrastructure, community support, and collective improvements.' },
   { q: 'Can I use my own domain?', a: 'Yes. The *.opuspopuli.org subdomain is optional. Your deployment, your identity.' },
+  { q: 'What license is the code under?', a: 'AGPL-3.0. This means you can use, modify, and deploy the code freely, but any modifications must also be open source. This ensures the civic commons stays open.' },
+  { q: 'Does the AI send data to external services?', a: 'No. All AI processing runs locally on your own infrastructure using open-source models. Your civic research never leaves your network.' },
+  { q: 'How is user privacy protected?', a: 'Privacy is built into the architecture — local AI processing, imprecise location matching, passwordless auth, short-lived sessions, and zero third-party trackers. See our privacy architecture for details.' },
+  { q: 'How can developers contribute?', a: 'Fork the repo, pick an issue labeled "good first issue," and submit a PR. We review promptly. See our open source page for the full guide.' },
   { q: 'What if we need help?', a: 'We\'re here to help communities succeed. Contact us about support options that fit your needs.' },
 ];
 ---
@@ -73,16 +86,49 @@ const faqs = [
     </div>
   </Section>
 
-  <Section title="Infrastructure costs">
+  <Section
+    title="For developers"
+    subtitle="Opus Populi is open source. Individual contributors are welcome — not just communities."
+  >
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {devAreas.map(area => (
+        <div class="border-l-2 border-sage pl-6 py-2">
+          <h3 class="text-base font-medium text-slate-dark mb-1">{area.title}</h3>
+          <p class="text-slate-dark/80 text-sm">{area.description}</p>
+        </div>
+      ))}
+    </div>
+    <div class="mt-10 flex gap-3">
+      <a
+        href="/open-source"
+        class="inline-flex items-center bg-slate-dark text-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
+      >
+        Contributor Guide
+      </a>
+      <a
+        href="https://github.com/OpusPopuli/opuspopuli"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center text-slate-dark/80 hover:text-slate-dark px-5 py-2.5 text-sm font-medium transition-colors"
+      >
+        View on GitHub
+      </a>
+    </div>
+  </Section>
+
+  <Section title="Infrastructure costs" background="gray">
     <p class="text-slate-dark/80 text-sm mb-8">Monthly estimates. Each community manages their own infrastructure.</p>
-    <div class="space-y-3">
+    <div class="space-y-3 max-w-2xl">
       {costs.map(cost => (
-        <div class="flex justify-between py-3 border-b border-slate-dark/5 last:border-0">
-          <div>
-            <span class="font-medium">{cost.tier}</span>
-            <span class="text-slate-dark/80 text-sm ml-3">{cost.use}</span>
+        <div class="py-3 border-b border-slate-dark/5 last:border-0">
+          <div class="flex justify-between mb-1">
+            <div>
+              <span class="font-medium">{cost.tier}</span>
+              <span class="text-slate-dark/80 text-sm ml-3">{cost.use}</span>
+            </div>
+            <span class="text-slate-dark/80">{cost.cost}/mo</span>
           </div>
-          <span class="text-slate-dark/80">{cost.cost}/mo</span>
+          <p class="text-slate-dark/70 text-xs">{cost.notes}</p>
         </div>
       ))}
     </div>

@@ -2,6 +2,53 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
+
+const tools = [
+  {
+    title: 'Petition Scanner',
+    description: 'Point your phone at any petition and get an instant, plain-language breakdown.',
+    href: '/platform#petition-scanner',
+    badge: 'AI-Powered',
+  },
+  {
+    title: 'Proposition Explorer',
+    description: 'Browse ballot measures with plain-language summaries and full text access.',
+    href: '/platform#proposition-explorer',
+  },
+  {
+    title: 'Campaign Finance Tracker',
+    description: 'Follow the money behind any ballot measure or candidate.',
+    href: '/platform#campaign-finance',
+  },
+  {
+    title: 'Representative Directory',
+    description: 'Find who represents you at every level and contact them directly.',
+    href: '/platform#representative-directory',
+  },
+  {
+    title: 'Meeting Calendar',
+    description: 'Browse upcoming legislative meetings with agendas and video links.',
+    href: '/platform#meeting-calendar',
+  },
+  {
+    title: 'Document Q&A',
+    description: 'Upload any civic document and ask questions in plain language.',
+    href: '/platform#document-qa',
+    badge: 'AI-Powered',
+  },
+  {
+    title: 'Region Plugins',
+    description: 'Add any jurisdiction\'s data sources without writing code.',
+    href: '/platform#regions',
+  },
+];
+
+const roadmap = [
+  'California pilot launch — 2026',
+  'Region Plugin Marketplace — community-contributed data sources',
+  'Mobile application — native iOS and Android',
+  'Multi-language support — starting with Spanish',
+];
 ---
 
 <BaseLayout title="About" description="Learn about Opus Populi and our mission to strengthen democracy through citizen-built civic technology.">
@@ -37,28 +84,52 @@ import Section from '../components/Section.astro';
     </div>
   </Section>
 
+  <Section title="Who we are">
+    <div class="max-w-2xl text-slate-dark/80 space-y-4">
+      <p>
+        Opus Populi started with a simple observation: the information citizens need to participate in democracy is public, but it's scattered across dozens of government websites, buried in legal language, and nearly impossible to navigate without expertise.
+      </p>
+      <p>
+        We're building the infrastructure to change that — open-source civic tools that any community can deploy, own, and control. Not a startup looking for an exit. Not a platform looking to monetize civic engagement. A collective effort to put democratic tools in the hands of the people they serve.
+      </p>
+    </div>
+  </Section>
+
   <Section
     title="What we build"
-    subtitle="Tools that put civic power back in citizens' hands."
+    subtitle="Seven tools that give communities direct access to civic information."
     background="gray"
   >
-    <div class="grid md:grid-cols-2 gap-8">
-      <div>
-        <h3 class="font-medium mb-2">Proposition Explorer</h3>
-        <p class="text-slate-dark/80 text-sm">Browse ballot propositions with plain-language summaries. Ask questions in natural language.</p>
-      </div>
-      <div>
-        <h3 class="font-medium mb-2">Legislative Tracker</h3>
-        <p class="text-slate-dark/80 text-sm">Follow bills through the legislative process. See hearings and track votes.</p>
-      </div>
-      <div>
-        <h3 class="font-medium mb-2">Representative Directory</h3>
-        <p class="text-slate-dark/80 text-sm">Find elected officials, see voting records, and access contact information.</p>
-      </div>
-      <div>
-        <h3 class="font-medium mb-2">Meeting Calendar</h3>
-        <p class="text-slate-dark/80 text-sm">Discover public meetings and hearings. Get notified about events that matter.</p>
-      </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {tools.map(tool => (
+        <a href={tool.href} class="text-slate-dark block hover:opacity-80 transition-opacity">
+          <div class="flex items-center gap-2 mb-1">
+            <h3 class="font-medium">{tool.title}</h3>
+            {tool.badge && (
+              <span class="text-xs font-medium bg-sage/10 text-slate-dark/70 px-2 py-0.5 rounded-full">{tool.badge}</span>
+            )}
+          </div>
+          <p class="text-slate-dark/80 text-sm">{tool.description}</p>
+        </a>
+      ))}
+    </div>
+    <div class="mt-10">
+      <a href="/platform" class="text-sm text-slate-dark/80 hover:text-slate-dark font-medium transition-colors">
+        See the full platform &rarr;
+      </a>
+    </div>
+  </Section>
+
+  <Section title="Roadmap">
+    <div class="max-w-2xl">
+      <ul class="space-y-3">
+        {roadmap.map(item => (
+          <li class="flex items-start gap-3 text-slate-dark/80">
+            <span class="text-slate-dark/50 mt-1.5 text-xs" aria-hidden="true">&#9679;</span>
+            <span class="text-sm">{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </Section>
 
@@ -66,7 +137,7 @@ import Section from '../components/Section.astro';
     <div class="max-w-2xl">
       <h2 class="text-2xl font-semibold mb-4 tracking-tight">Community-owned from day one</h2>
       <p class="text-white/70 mb-10">
-        This isn't a product you license. It's infrastructure you own. When we launch, every line of code will be yours under AGPL-3.0. Fork it. Modify it. Make it serve your community. That's the point.
+        This isn't a product you license. It's infrastructure you own. Every line of code is yours under AGPL-3.0. Fork it. Modify it. Make it serve your community. That's the point.
       </p>
 
       <div class="grid sm:grid-cols-3 gap-8">

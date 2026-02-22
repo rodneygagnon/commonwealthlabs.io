@@ -1,9 +1,11 @@
 ---
 const navLinks = [
   { href: '/', label: 'Home' },
+  { href: '/platform', label: 'Platform' },
   { href: '/about', label: 'About' },
   { href: '/why', label: 'Why' },
   { href: '/network', label: 'Network' },
+  { href: '/open-source', label: 'Open Source' },
   { href: '/get-involved', label: 'Get Involved' },
 ];
 
@@ -21,7 +23,7 @@ const currentPath = Astro.url.pathname;
         />
       </a>
 
-      <ul class="hidden md:flex items-center gap-8">
+      <ul class="hidden md:flex items-center gap-6">
         {navLinks.map(link => (
           <li>
             <a

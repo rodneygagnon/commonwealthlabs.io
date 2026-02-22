@@ -2,33 +2,45 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
-import FeatureCard from '../components/FeatureCard.astro';
 
-const features = [
+const tools = [
   {
-    title: 'Community-owned',
-    description: 'The tools belong to the people who use them. Not a platform you rent—infrastructure you own.',
+    title: 'Scan Petitions',
+    description: 'Point your phone at any petition and get an instant, plain-language breakdown of what it means.',
+    href: '/platform#petition-scanner',
   },
   {
-    title: 'Transparent by design',
-    description: 'Every decision visible. Every line of code open. Built to earn trust.',
+    title: 'Explore Propositions',
+    description: 'Browse every ballot measure in your jurisdiction with plain-language summaries and full text.',
+    href: '/platform#proposition-explorer',
   },
   {
-    title: 'Privacy as a right',
-    description: 'Your civic research is no one\'s business. No tracking. No ads. No data harvesting.',
+    title: 'Follow the Money',
+    description: 'See who\'s funding what. Track contributions, expenditures, and outside spending on any measure.',
+    href: '/platform#campaign-finance',
   },
   {
-    title: 'Local control',
-    description: 'Your community. Your rules. Your data stays where you decide.',
+    title: 'Find Representatives',
+    description: 'Look up who represents you at every level of government and contact them directly.',
+    href: '/platform#representative-directory',
   },
   {
-    title: 'Collective strength',
-    description: 'Improvements made anywhere benefit everyone. We grow stronger together.',
+    title: 'Attend Meetings',
+    description: 'Never miss a hearing that matters. Browse upcoming meetings with agendas and video links.',
+    href: '/platform#meeting-calendar',
   },
   {
-    title: 'No lock-in',
-    description: 'Leave anytime. Take everything with you. The code is yours.',
+    title: 'Ask Documents',
+    description: 'Upload any civic document and ask questions in plain language. Get answers with citations.',
+    href: '/platform#document-qa',
   },
+];
+
+const values = [
+  { title: 'Community-owned', description: 'Infrastructure you own, not a platform you rent.' },
+  { title: 'Privacy by design', description: 'All AI runs locally. No tracking. No data harvesting.' },
+  { title: 'Transparent', description: 'Every line of code is open source under AGPL-3.0.' },
+  { title: 'No lock-in', description: 'Leave anytime. Take everything with you.' },
 ];
 
 const techStack = [
@@ -48,18 +60,35 @@ const techStack = [
     subtitle="Democracy works when people have the tools to participate. We're building civic technology that communities own, control, and shape—not platforms built by businesses to extract value from public life."
     ctaText="Get Involved"
     ctaHref="/get-involved"
-    secondaryCtaText="Why It Matters"
-    secondaryCtaHref="/why"
+    secondaryCtaText="See the Platform"
+    secondaryCtaHref="/platform"
   />
 
   <Section
     id="features"
-    title="Built for communities"
-    subtitle="Civic infrastructure that belongs to the people it serves."
+    title="What we build"
+    subtitle="Civic tools for every step of the democratic process."
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {features.map(feature => (
-        <FeatureCard {...feature} />
+      {tools.map(tool => (
+        <a href={tool.href} class="text-slate-dark border-l-2 border-slate-dark/10 pl-6 py-2 hover:border-sage transition-colors">
+          <h3 class="font-medium mb-1">{tool.title}</h3>
+          <p class="text-slate-dark/80 text-sm">{tool.description}</p>
+        </a>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    id="values"
+    background="gray"
+  >
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {values.map(v => (
+        <div>
+          <h3 class="text-sm font-medium text-slate-dark mb-1">{v.title}</h3>
+          <p class="text-slate-dark/70 text-sm">{v.description}</p>
+        </div>
       ))}
     </div>
   </Section>
@@ -67,23 +96,22 @@ const techStack = [
   <Section
     id="how-it-works"
     title="How it works"
-    background="gray"
   >
     <div class="grid md:grid-cols-3 gap-12">
       <div>
         <div class="text-sm font-medium text-slate-dark mb-3">01</div>
-        <h3 class="text-lg font-medium mb-2">A community decides to take control</h3>
-        <p class="text-slate-dark/80 text-sm">Start with a complete, tested foundation. No building from scratch.</p>
+        <h3 class="text-lg font-medium mb-2">Choose your jurisdiction</h3>
+        <p class="text-slate-dark/80 text-sm">Pick your state, county, or city. The platform loads your local civic data automatically.</p>
       </div>
       <div>
         <div class="text-sm font-medium text-slate-dark mb-3">02</div>
-        <h3 class="text-lg font-medium mb-2">They adapt it to their needs</h3>
-        <p class="text-slate-dark/80 text-sm">Customize for your jurisdiction. Your data, your rules, your priorities.</p>
+        <h3 class="text-lg font-medium mb-2">Explore what matters</h3>
+        <p class="text-slate-dark/80 text-sm">Scan petitions, read propositions, follow campaign money, find your representatives.</p>
       </div>
       <div>
         <div class="text-sm font-medium text-slate-dark mb-3">03</div>
-        <h3 class="text-lg font-medium mb-2">They join a network of communities</h3>
-        <p class="text-slate-dark/80 text-sm">Independent but connected. Improvements anywhere benefit everyone.</p>
+        <h3 class="text-lg font-medium mb-2">Take action</h3>
+        <p class="text-slate-dark/80 text-sm">Contact representatives, attend meetings, share what you learn with your community.</p>
       </div>
     </div>
   </Section>
@@ -92,6 +120,7 @@ const techStack = [
     id="technology"
     title="Technology"
     subtitle="Built entirely with open-source components."
+    background="gray"
   >
     <div class="flex flex-wrap gap-3">
       {techStack.map(tech => (
